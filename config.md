@@ -185,6 +185,7 @@ If `rlimits` contains duplicated entries with same `type`, the runtime MUST [gen
 For Linux-based systems, the `process` object supports the following process-specific properties.
 
 * **`apparmorProfile`** (string, OPTIONAL) specifies the name of the AppArmor profile for the process. For more information about AppArmor, see [AppArmor documentation][apparmor].
+
 * **`capabilities`** (object, OPTIONAL) is an object containing arrays that specifies the sets of capabilities for the process.
     Valid values are defined in the [capabilities(7)][capabilities.7] man page, such as `CAP_CHOWN`.
     Any value which cannot be mapped to a relevant kernel interface MUST cause an error.
