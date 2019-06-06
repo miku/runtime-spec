@@ -166,15 +166,12 @@ For POSIX platforms the `mounts` structure has the following fields:
 For systems that support POSIX rlimits (for example Linux and Solaris), the `process` object supports the following process-specific properties:
 
 * **`rlimits`** (array of objects, OPTIONAL) allows setting resource limits for the process. Each entry has the following structure:
-
     * **`type`** (string, REQUIRED) the platform resource being limited.
         * Linux: valid values are defined in the [`getrlimit(2)`][getrlimit.2] man page, such as `RLIMIT_MSGQUEUE`.
         * Solaris: valid values are defined in the [`getrlimit(3)`][getrlimit.3] man page, such as `RLIMIT_CORE`.
-
         The runtime MUST [generate an error](runtime.md#errors) for any values which cannot be mapped to a relevant kernel interface.
         For each entry in `rlimits`, a [`getrlimit(3)`][getrlimit.3] on `type` MUST succeed.
         For the following properties, `rlim` refers to the status returned by the `getrlimit(3)` call.
-
     * **`soft`** (uint64, REQUIRED) the value of the limit enforced for the corresponding resource.
         `rlim.rlim_cur` MUST match the configured value.
     * **`hard`** (uint64, REQUIRED) the ceiling for the soft limit that could be set by an unprivileged process.
