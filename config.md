@@ -165,8 +165,7 @@ For POSIX platforms the `mounts` structure has the following fields:
 
 For systems that support POSIX rlimits (for example Linux and Solaris), the `process` object supports the following process-specific properties:
 
-* **`rlimits`** (array of objects, OPTIONAL) allows setting resource limits for the process.
-    Each entry has the following structure:
+* **`rlimits`** (array of objects, OPTIONAL) allows setting resource limits for the process. Each entry has the following structure:
 
 * **`type`** (string, REQUIRED) the platform resource being limited.
     * Linux: valid values are defined in the [`getrlimit(2)`][getrlimit.2] man page, such as `RLIMIT_MSGQUEUE`.
