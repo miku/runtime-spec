@@ -190,6 +190,7 @@ For Linux-based systems, the `process` object supports the following process-spe
 
 * **`apparmorProfile`** (string, OPTIONAL) specifies the name of the AppArmor profile for the process.
     For more information about AppArmor, see [AppArmor documentation][apparmor].
+
 * **`capabilities`** (object, OPTIONAL) is an object containing arrays that specifies the sets of capabilities for the process.
     Valid values are defined in the [capabilities(7)][capabilities.7] man page, such as `CAP_CHOWN`.
     Any value which cannot be mapped to a relevant kernel interface MUST cause an error.
@@ -200,14 +201,17 @@ For Linux-based systems, the `process` object supports the following process-spe
     * **`inheritable`** (array of strings, OPTIONAL) the `inheritable` field is an array of inheritable capabilities that are kept for the process.
     * **`permitted`** (array of strings, OPTIONAL) the `permitted` field is an array of permitted capabilities that are kept for the process.
     * **`ambient`** (array of strings, OPTIONAL) the `ambient` field is an array of ambient capabilities that are kept for the process.
+
 * **`noNewPrivileges`** (bool, OPTIONAL) setting `noNewPrivileges` to true prevents the process from gaining additional privileges.
     As an example, the [`no_new_privs`][no-new-privs] article in the kernel documentation has information on how this is achieved using a `prctl` system call on Linux.
+
 * **`oomScoreAdj`** *(int, OPTIONAL)* adjusts the oom-killer score in `[pid]/oom_score_adj` for the process's `[pid]` in a [proc pseudo-filesystem][proc_2].
     If `oomScoreAdj` is set, the runtime MUST set `oom_score_adj` to the given value.
     If `oomScoreAdj` is not set, the runtime MUST NOT change the value of `oom_score_adj`.
 
     This is a per-process setting, where as [`disableOOMKiller`](config-linux.md#memory) is scoped for a memory cgroup.
     For more information on how these two settings work together, see [the memory cgroup documentation section 10. OOM Contol][cgroup-v1-memory_2].
+
 * **`selinuxLabel`** (string, OPTIONAL) specifies the SELinux label for the process.
     For more information about SELinux, see  [SELinux documentation][selinux].
 
